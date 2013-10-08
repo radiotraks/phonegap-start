@@ -15,7 +15,9 @@
     <author href="http://radiotraks.com.com" email="emcguire@radiotraks.com">
         RadioTraks Team
     </author>
-
+        
+    <gap:plugin name="org.apache.cordova.core.audiohandler" />
+    <content src="index.html" />
     <!--
         Enable individual API permissions here.
         The "device" permission is required for the 'deviceready' event.
