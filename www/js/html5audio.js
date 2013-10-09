@@ -1,6 +1,5 @@
 
 
-
 var progressTimer;
 
 var playButton;
@@ -23,7 +22,7 @@ function pad2(number) {
 	return (number < 10 ? '0' : '') + number
 }
 
-var myaudioURL = 'http://stream.4zzzfm.org.au:789/';
+var myaudioURL = 'http://icy3.abacast.com/nabco-wrkzfmmp3-48.m3u';
 var myaudio = new Audio(myaudioURL);
 var isPlaying = false;
 var readyStateInterval = null;
