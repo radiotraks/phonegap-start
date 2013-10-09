@@ -1,100 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-                  "http://www.w3.org/TR/html4/strict.dtd">
-    <html>
-      <head>
-        <title>Media Example</title>
+<!DOCTYPE html>
+<html>
+  <head>
+  <title></title>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+	<meta charset="utf-8">
+	<style type="text/css">
 
-        <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-        <script type="text/javascript" charset="utf-8">
+		#playcontrols {
+			text-align: center;
+			margin-top: 50px;
+		}
+		#playcontrols #activityindicator, #playcontrols #stopbutton {
+			display: none;
+		}
 
-        // Wait for device API libraries to load
-        //
-        document.addEventListener("deviceready", onDeviceReady, false);
+		#textpositiondiv {
+			margin-top: 100px;
+		}
 
-        // device APIs are available
-        //
-        function onDeviceReady() {
-            playAudio("http://icy3.abacast.com/nabco-wrkzfmaac-48.m3u");
-        }
-
-        // Audio player
-        //
-        var my_media = null;
-        var mediaTimer = null;
-
-        // Play audio
-        //
-        function playAudio(src) {
-            // Create Media object from src
-            my_media = new Media(src, onSuccess, onError);
-
-            // Play audio
-            my_media.play();
-
-            // Update my_media position every second
-            if (mediaTimer == null) {
-                mediaTimer = setInterval(function() {
-                    // get my_media position
-                    my_media.getCurrentPosition(
-                        // success callback
-                        function(position) {
-                            if (position > -1) {
-                                setAudioPosition((position) + " sec");
-                            }
-                        },
-                        // error callback
-                        function(e) {
-                            console.log("Error getting pos=" + e);
-                            setAudioPosition("Error: " + e);
-                        }
-                    );
-                }, 1000);
-            }
-        }
-
-        // Pause audio
-        //
-        function pauseAudio() {
-            if (my_media) {
-                my_media.pause();
-            }
-        }
-
-        // Stop audio
-        //
-        function stopAudio() {
-            if (my_media) {
-                my_media.stop();
-            }
-            clearInterval(mediaTimer);
-            mediaTimer = null;
-        }
-
-        // onSuccess Callback
-        //
-        function onSuccess() {
-            console.log("playAudio():Audio Success");
-        }
-
-        // onError Callback
-        //
-        function onError(error) {
-            alert('code: '    + error.code    + '\n' +
-                  'message: ' + error.message + '\n');
-        }
-
-        // Set audio position
-        //
-        function setAudioPosition(position) {
-            document.getElementById('audio_position').innerHTML = position;
-        }
-
-        </script>
-      </head>
-      <body>
-        <a href="#" class="btn large" onclick="playAudio('http://icy3.abacast.com/nabco-wrkzfmaac-48.m3u');">Play | </a>
-        <a href="#" class="btn large" onclick="pauseAudio();">Pause | </a>
-        <a href="#" class="btn large" onclick="stopAudio();">Stop </a>
-        <p id="audio_position"></p>
-      </body>
-    </html>
+	</style>
+	<script type="text/javascript" charset="utf-8" src="scripts/html5audio.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+  </head>
+  <body>
+	  <h2>Example HTML5 Audio Streamer app</h2>
+  	  <div id="playcontrols">
+		  <a href="#" id="playbutton" onClick="html5audio.play();return false;"><img src="images/playbutton.png" /></a>
+		  <a href="#" id="activityindicator" onClick="html5audio.stop();return false;"><img src="images/activityindicator.gif" /></a>
+		  <a href="#" id="stopbutton" onClick="html5audio.stop();return false;"><img src="images/stopbutton.png" /></a>
+	  </div>
+	  <div id="textpositiondiv">Time played: <span id="textposition">stopped</span></div>
+	  <script type="text/javascript">
+		  playButton = document.getElementById('playbutton');
+		  stopButton = document.getElementById('stopbutton');
+		  activityIndicator = document.getElementById('activityindicator');
+		  textPosition = document.getElementById('textposition');
+	  </script>
+  </body>
+</html>
