@@ -14,7 +14,7 @@
     </author>
 
     <feature name="http://api.phonegap.com/1.0/device" />
-
+    <gap:plugin name="org.apache.cordova.core.audiohandler" />
     
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
