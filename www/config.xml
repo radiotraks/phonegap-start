@@ -25,6 +25,7 @@
     <preference name="fullscreen"       value="false" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="keepRunning" value="true" />
+    <access origin="*" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
