@@ -1,5 +1,4 @@
 
-
 var progressTimer;
 
 var playButton;
@@ -31,7 +30,7 @@ var html5audio = {
 	play: function()
 	{
 		isPlaying = true;
-		myaudio.play();
+		myaudio.play({ playAudioWhenScreenIsLocked : true })
 
 		readyStateInterval = setInterval(function(){
 			 if (myaudio.readyState <= 2) {
